@@ -70,7 +70,7 @@ class CAEmitterLayerViewController: UIViewController {
     if let identifier = segue.identifier {
       switch identifier {
       case "DisplayEmitterControls":
-        emitterLayer.renderMode = kCAEmitterLayerAdditive
+        emitterLayer.renderMode = CAEmitterLayerRenderMode.additive
         (segue.destination as? CAEmitterLayerControlsViewController)?.emitterLayerViewController = self
       default:
         break

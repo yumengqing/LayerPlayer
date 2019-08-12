@@ -30,7 +30,7 @@ class CAEmitterLayerControlsViewController: UITableViewController, UIPickerViewD
   var emitterCell: CAEmitterCell {
     return emitterLayerViewController.emitterCell
   }
-  var emitterLayerRenderModes = [kCAEmitterLayerUnordered, kCAEmitterLayerOldestFirst, kCAEmitterLayerOldestLast, kCAEmitterLayerBackToFront, kCAEmitterLayerAdditive] as NSArray
+    var emitterLayerRenderModes = [CAEmitterLayerRenderMode.unordered, CAEmitterLayerRenderMode.oldestFirst, CAEmitterLayerRenderMode.oldestLast, CAEmitterLayerRenderMode.backToFront, CAEmitterLayerRenderMode.additive] as NSArray
   var renderModePickerVisible = false
   
   // MARK: - View life cycle
@@ -127,7 +127,7 @@ class CAEmitterLayerControlsViewController: UITableViewController, UIPickerViewD
   // MARK: - Helpers
   
   func updateRenderModePickerValueLabel() {
-    renderModePickerValueLabel.text = emitterLayer.renderMode
+    renderModePickerValueLabel.text = emitterLayer.renderMode.rawValue
   }
   
   func updateSliderValueLabels() {
@@ -200,7 +200,7 @@ class CAEmitterLayerControlsViewController: UITableViewController, UIPickerViewD
   }
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    emitterLayerViewController.emitterLayer.renderMode = emitterLayerRenderModes[row] as! String
+    emitterLayerViewController.emitterLayer.renderMode = CAEmitterLayerRenderMode(rawValue: emitterLayerRenderModes[row] as! String)
     updateRenderModePickerValueLabel()
   }
   

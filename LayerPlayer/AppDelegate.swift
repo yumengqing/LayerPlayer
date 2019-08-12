@@ -15,12 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
   
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     UILabel.appearance().font = UIFont(name: "Avenir-Light", size: 17.0)
     UILabel.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).font = UIFont(name: "Avenir-light", size: 14.0)
     UINavigationBar.appearance().tintColor = UIColor.white
     UINavigationBar.appearance().barTintColor = swiftOrangeColor
-    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont(name: "Avenir-light", size: 20.0)!]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: "Avenir-light", size: 20.0)!]
     UITableView.appearance().separatorColor = swiftOrangeColor
     UITableViewCell.appearance().separatorInset = UIEdgeInsets.zero
     UIControl.appearance().tintColor = swiftOrangeColor

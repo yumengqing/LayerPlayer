@@ -42,7 +42,7 @@ class CALayerControlsViewController: UITableViewController, UIPickerViewDataSour
   }
   
   weak var layerViewController: CALayerViewController!
-  var contentsGravityValues = [kCAGravityCenter, kCAGravityTop, kCAGravityBottom, kCAGravityLeft, kCAGravityRight, kCAGravityTopLeft, kCAGravityTopRight, kCAGravityBottomLeft, kCAGravityBottomRight, kCAGravityResize, kCAGravityResizeAspect, kCAGravityResizeAspectFill] as NSArray
+    var contentsGravityValues = [CALayerContentsGravity.center, CALayerContentsGravity.top, CALayerContentsGravity.bottom, CALayerContentsGravity.left, CALayerContentsGravity.right, CALayerContentsGravity.topLeft, CALayerContentsGravity.topRight, CALayerContentsGravity.bottomLeft, CALayerContentsGravity.bottomRight, CALayerContentsGravity.resize, CALayerContentsGravity.resizeAspect, CALayerContentsGravity.resizeAspectFill] as NSArray
   var contentsGravityPickerVisible = false
   
   // MARK: - View life cycle
@@ -119,14 +119,14 @@ class CALayerControlsViewController: UITableViewController, UIPickerViewDataSour
     
     switch filter {
     case .linear:
-      filterValue = kCAFilterLinear
+        filterValue = CALayerContentsFilter.linear.rawValue
     case .nearest:
-      filterValue = kCAFilterNearest
+        filterValue = CALayerContentsFilter.nearest.rawValue
     case .trilinear:
-      filterValue = kCAFilterTrilinear
+        filterValue = CALayerContentsFilter.trilinear.rawValue
     }
     
-    layerViewController.layer.magnificationFilter = filterValue
+    layerViewController.layer.magnificationFilter = CALayerContentsFilter(rawValue: filterValue)
   }
   
   // MARK: - Triggered actions
@@ -165,7 +165,7 @@ class CALayerControlsViewController: UITableViewController, UIPickerViewDataSour
   // MARK: - Helpers
   
   func updateContentsGravityPickerValueLabel() {
-    contentsGravityPickerValueLabel.text = layerViewController.layer.contentsGravity
+    contentsGravityPickerValueLabel.text = layerViewController.layer.contentsGravity.rawValue
   }
   
   func updateSliderValueLabels() {
@@ -241,7 +241,7 @@ class CALayerControlsViewController: UITableViewController, UIPickerViewDataSour
   }
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    layerViewController.layer.contentsGravity = contentsGravityValues[row] as! String
+    layerViewController.layer.contentsGravity = CALayerContentsGravity(rawValue: contentsGravityValues[row] as! String)
     updateContentsGravityPickerValueLabel()
   }
 

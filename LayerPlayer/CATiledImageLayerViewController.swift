@@ -16,7 +16,7 @@ class CATiledImageLayerViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    doneButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "LayerPlayer", size: 23.0)!], for: UIControlState())
+    doneButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "LayerPlayer", size: 23.0)!], for: UIControl.State())
     scrollView.contentSize = CGSize(width: 5120, height: 3200)
   }
   
